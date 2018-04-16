@@ -34,14 +34,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/JaxRSWeb/WebContent/WEB-INF/lib/persistence-api-1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/lucas/.m2/repository/org/springframework/spring-test/4.3.14.RELEASE/spring-test-4.3.14.RELEASE.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.springframework"/>
-			<attribute name="maven.artifactId" value="spring-test"/>
-			<attribute name="maven.version" value="4.3.14.RELEASE"/>
-			<attribute name="maven.scope" value="test"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -1,12 +1,21 @@
 package edu.ap.spring.model;
 
 import java.time.LocalDate;
+import javax.persistence.*;
 
+@Entity
 public class InhaalExamen {
- 
+	
+	@Column
     private String student;
+	
+	@Column
     private String exam;
+	
+	@Column
  	private String date;
+	
+	@Column
 	private String reason;
  
     public InhaalExamen() {
