@@ -15,10 +15,26 @@ import edu.ap.spring.redis.RedisService;
 @SpringBootApplication
 public class SpringBootRunner {
 	
+	private RedisService service;
+	
+	@Autowired
+	public void setRedisService(RedisService service) {
+		this.service = service;
+	}
+	
 	@Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-		return (args) -> {	 		
-	 		// Keys
+		return (args) -> {	 	
+		
+	 		service.setKey("test", "test2");
+	 		Map<String, String> studentInfo = new HashMap<String, String>();
+	 		studentInfo.put("examen1", "reden1");
+	 		service.hset("student", studentInfo);
+	 		Map<Object, Object> testInfo = service.hgetAll("student");
+	 		String keyString = testInfo.keySet().toString();
+	 		System.out.println(keyString.substring(1, keyString.length()-1));
+	 		System.out.println(testInfo.get("examen1"));
+	 		
 		};
     }
 	
