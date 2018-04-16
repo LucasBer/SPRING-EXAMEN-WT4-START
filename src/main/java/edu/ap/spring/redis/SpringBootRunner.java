@@ -25,7 +25,7 @@ public class SpringBootRunner {
 	@Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return (args) -> {	 	
-		
+			/*
 	 		service.setKey("test", "test2");
 	 		Map<String, String> studentInfo = new HashMap<String, String>();
 	 		studentInfo.put("examen1", "reden1");
@@ -34,7 +34,8 @@ public class SpringBootRunner {
 	 		String keyString = testInfo.keySet().toString();
 	 		System.out.println(keyString.substring(1, keyString.length()-1));
 	 		System.out.println(testInfo.get("examen1"));
-	 		
+	 		System.out.println(service.keys("u"));
+	 		*/
 		};
     }
 	

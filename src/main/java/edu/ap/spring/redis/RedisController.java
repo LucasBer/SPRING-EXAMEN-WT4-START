@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,9 +36,27 @@ public class RedisController {
 	   
 	   @PostMapping("/new")
 	   public String newInhaal(@RequestParam ("student") String student, @RequestParam ("exam") String exam, @RequestParam ("reason") String reason) {
-				   Map<String, String> studentInfo = new HashMap<String, String>();
+		   Set<String> studentSet = service.keys(student); //Studenten ophalen met zelfde naam
+		   String studentName = studentSet.toString(); // [student]
+		   studentName = studentName.substring(1, studentName.length()-1); //student
+		   if (!(studentName == student)) { //
+			   Map<String, String> newStudent = new HashMap<String, String>();
+			   newStudent.put(exam, reason);
+			   service.hset(student, newStudent);
+			   }
+		   else {
+			   Map<Object, Object> studentInfo = service.hgetAll(student);
+			   String keyString = studentInfo.keySet().toString(); // [keyString]
+			   keyString = keyString.substring(1, keyString.length()-1); // keyString
+			   String valueString = studentInfo.get(keyString).toString();
+			   if (!(keyString == exam && valueString == reason)) {
+				   Map<String, String> newStudent = new HashMap<String, String>();
 				   studentInfo.put(exam, reason);
-				   service.hset(student, studentInfo);
+				   service.hset(student, newStudent);
+			   }
+			   else
+				   return "/";
+		   }
 		   return "/";
 	   }
 	   
